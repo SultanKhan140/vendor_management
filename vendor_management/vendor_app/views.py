@@ -29,7 +29,7 @@ class LoginAPI(KnoxLoginView):
         return super(LoginAPI, self).post(request, format=None)
     
 class VendorViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [ permissions.IsAuthenticated ]
 
     queryset = Vendor.objects.all()
     serializer_class = VendorSerializer
@@ -64,7 +64,7 @@ class VendorViewSet(viewsets.ModelViewSet):
         })
 
 class PurchaseOrderViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [ permissions.IsAuthenticated ]
     queryset = PurchaseOrder.objects.all()
     serializer_class = PurchaseOrderSerializer
 
